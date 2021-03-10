@@ -1,38 +1,87 @@
-.unosForm{
+.network{
+    display:flex;
+    flex-direction: row;
+    min-width: 500px;
+    min-height: 450px;
+    
+    justify-content: start;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.unos{
     border: 1px solid blue;
     display: flex;
     flex-direction: column;
     padding: 10px;
+}
+
+.users{
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 1px solid coral;
+    width: 100%;
+    padding: 10px;
     
 }
 
-.network{
-    display:flex;
-    flex-direction: row;
-    min-width: 1000px;
-    min-height: 450px;
-    height: 700px;
-    justify-content: start;
+.userDraw{
+    
+    border: 1px solid rgb(7, 235, 64);
+    height: 250px;
+    width: 150px;
+    background-color: rgb(106, 21, 243); 
+    margin-bottom: 10px;;
 }
 
-.usersDiv{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    max-height: 250px;
+.userPicture{
+    position: relative;
+    margin: 5px;
+    margin-bottom: 0px;
+    border: 2px solid white;
+    padding: 2px;
+    padding-bottom: 0px;
+    
 }
+.pic{
+    max-height: 100%;
+    max-width: 100%;  
+    object-fit: fill;
+    width: 150px;
+    height: 120px;
+}
+
+.userInfo{
+    display: flex;
+    color:white;
+    flex-direction: column;
+    margin: 5px;
+
+}
+
+.editDeleteBtns{
+    display: flex;
+    
+    justify-content: flex-end;
+    margin: 1px;
+    margin-top: 0px;
+    
+    padding: 2px;
+    
+}
+
+
+
+
 
 .inputs{
     color:blue;
 }
 
-.createButton:hover {
+.createButton {
+    margin-top: 10px;
     background-color:aqua;
 }
 
-.userBox{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}

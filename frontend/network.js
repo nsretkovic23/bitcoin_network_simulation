@@ -8,7 +8,7 @@ export class network
         this.container=null;
     }
 
-    crtajFormu(panel)
+    crtajFormu(panel) //panel je unos div, paint referenca
     {
         if(!panel)
             throw new Error("panel err");
@@ -18,25 +18,21 @@ export class network
         labelsInputs.set("Starting Balance(btc):", "number");
         labelsInputs.set("Rig cost($):", "number");
 
-        let divUnosForm=document.createElement("div");
-        divUnosForm.classList.add("unosForm");
-        panel.appendChild(divUnosForm);
-
         labelsInputs.forEach((value,key)=>{
             let labela=document.createElement("label");
             labela.innerHTML=key;
-            divUnosForm.appendChild(labela);
+            panel.appendChild(labela);
 
             let inputBox=document.createElement("input");
             inputBox.type=value;
             inputBox.min=(value=="number"&& key=="Starting Balance(btc):")? 0 : 300;
             inputBox.classList.add("inputs");
-            divUnosForm.appendChild(inputBox);
+            panel.appendChild(inputBox);
         })
 
         let labela=document.createElement("label");
         labela.innerHTML="Program: ";
-        divUnosForm.appendChild(labela); 
+        panel.appendChild(labela); 
 
         //const programs=["Cudo Miner(150$)", "Hashing24(270$)", "Kryptex(330$)"];
         const programs=new Map();
@@ -46,7 +42,7 @@ export class network
 
         let dropDown=document.createElement("select");
         dropDown.classList.add("inputs");
-        divUnosForm.appendChild(dropDown);
+        panel.appendChild(dropDown);
         programs.forEach((value,key)=>{
             let opt=document.createElement("option");
             opt.innerHTML=key;
@@ -59,7 +55,7 @@ export class network
         let dugme=document.createElement("button");
         dugme.classList.add("createButton");
         dugme.innerHTML="Create";
-        divUnosForm.appendChild(dugme);
+        panel.appendChild(dugme);
 
         dugme.onclick=(ev)=>{
             this.ubaciKorisnika(dugme);
@@ -82,26 +78,34 @@ export class network
         
         let korisnik=new user(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
         this.users.push(korisnik);
-        this.crtajMrezu(this.container);
+        this.crtajMrezu(document.querySelector(".users"));
         console.log(this.users);
     }
 
-    crtajMrezu(panel)
+    crtajMrezu(panel) 
     {
-        let usersDiv=document.createElement("div");
-        panel.appendChild(usersDiv);
-        usersDiv.classList.add("usersDiv");
-        this.users.forEach((el)=>{
-            el.crtajKorisnika(usersDiv);
-        })
+        if(this.users.length!=0)
+        this.users[this.users.length-1].crtajKorisnika(panel);
     }
 
-    crtajStranu(panel) //panel = document.body kao celokupni div
+    crtajStranu(panel) //paint referenca - panel=doc.body, network - panel child
     {
+        if(!panel)
+            throw new Error("Panel error");
+
         this.container=document.createElement("div");
-        this.container.classList.add("network")
+        this.container.classList.add("network");
         panel.appendChild(this.container);
-        this.crtajMrezu(this.container);
-        this.crtajFormu(this.container);
+
+        let unos=document.createElement("div");
+        this.container.appendChild(unos);
+        unos.classList.add("unos");
+
+        let users=document.createElement("div");
+        this.container.appendChild(users);
+        users.classList.add("users");
+         
+        this.crtajFormu(unos); //unos
+        this.crtajMrezu(users); //users
     }
 }

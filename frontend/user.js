@@ -7,35 +7,60 @@ export class user{
         this.program=programvalue;
     }
 
-    crtajKorisnika(panel)
+    crtajKorisnika(panel) //panel je users
     {
         if(!panel)
-        {
-        alert("panel je null");
-        return;
-        }
+            throw new Error("panel error");
 
-        let userPanel=document.createElement("div");
-        panel.appendChild(userPanel);
-        userPanel.classList.add("userBox");
+        let userDraw=document.createElement("div");
+        panel.appendChild(userDraw);
+        userDraw.classList.add("userDraw");
+
+        let userPicture=document.createElement("div");
+        userDraw.appendChild(userPicture);
+        userPicture.classList.add("userPicture");
+
+        let pic=document.createElement("img");
+        pic.classList.add("pic");
+        pic.src="https://images-na.ssl-images-amazon.com/images/I/91MteSqsrJL.jpg";
+        userPicture.appendChild(pic);
+
+        let userInfo=document.createElement("div");
+        userInfo.classList.add("userInfo");
+        userDraw.appendChild(userInfo);
 
         let usern=document.createElement("label");
-        usern.innerHTML=this.username;
-        userPanel.appendChild(usern);
+        usern.innerHTML=`username: ${this.username}`;
+        userInfo.appendChild(usern);
 
         let bal=document.createElement("label");
-        bal.innerHTML=this.balance;
-        userPanel.appendChild(bal);
+        bal.innerHTML=`balance: ${this.balance}`;
+        userInfo.appendChild(bal);
 
         let rig=document.createElement("label");
-        rig.innerHTML=this.rig_cost;
-        userPanel.appendChild(rig);
+        rig.innerHTML=`rig cost: ${this.rig_cost}`;
+        userInfo.appendChild(rig);
 
         let prog=document.createElement("label");
         prog.innerHTML=`program value: ${this.program}$`;
-        userPanel.appendChild(prog);
+        userInfo.appendChild(prog);
+
         
-        console.log(userPanel);
+
+        let editDeleteDiv=document.createElement("div");
+        userDraw.appendChild(editDeleteDiv);
+        editDeleteDiv.classList.add("editDeleteBtns");
+
+        let editButton=document.createElement("button");
+        editButton.innerHTML="Edit";
+        let deleteButton=document.createElement("button");
+        deleteButton.innerHTML="Delete";
+
+        editDeleteDiv.appendChild(editButton);
+        editDeleteDiv.appendChild(deleteButton);
+
+        
+        console.log(panel);
 
 
     }
