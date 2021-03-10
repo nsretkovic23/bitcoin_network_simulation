@@ -1,0 +1,38 @@
+.unosForm{
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+}
+
+.network{
+    display:flex;
+    flex-direction: row;
+    min-width: 1000px;
+    min-height: 450px;
+    height: 700px;
+    justify-content: start;
+}
+
+.usersDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    max-height: 250px;
+}
+
+.inputs{
+    color:blue;
+}
+
+.createButton:hover {
+    background-color:aqua;
+}
+
+.userBox{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
